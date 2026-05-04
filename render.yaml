@@ -2,15 +2,9 @@ services:
   - type: web
     name: 9router
     env: docker
-    plan: starter # Chú ý: Cần plan Starter ($7/tháng) để có thể dùng Persistent Disk (disk) lưu dữ liệu
+    plan: free
     region: singapore
-    disk:
-      name: 9router-data
-      mountPath: /var/lib/9router
-      sizeGB: 1
     envVars:
-      - key: DATA_DIR
-        value: /var/lib/9router
       - key: JWT_SECRET
         generateValue: true
       - key: INITIAL_PASSWORD
