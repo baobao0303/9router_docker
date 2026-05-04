@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: 9router:latest
+    container_name: 9router
+    restart: always
+    ports:
+      - "20128:20128"
+    volumes:
+      - 9router_data:/var/lib/9router
+    environment:
+      - DATA_DIR=/var/lib/9router
+      - PORT=20128
+      - JWT_SECRET=change-me-to-a-long-random-secret
+      - INITIAL_PASSWORD=change-me
+
+volumes:
+  9router_data:
