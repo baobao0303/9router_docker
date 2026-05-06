@@ -17,7 +17,13 @@ function isTunnelRequest(request, settings) {
 
 export async function POST(request) {
   try {
-    const { password } = await request.json();
+    let body;
+    try {
+      body = await request.json();
+    } catch (e) {
+      return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+    }
+    const { password } = body;
     const settings = await getSettings();
 
     // Block login via tunnel/tailscale if dashboard access is disabled

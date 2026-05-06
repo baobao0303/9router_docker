@@ -227,7 +227,9 @@ export async function POST(request, { params }) {
 
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (error) {
-    console.log("OAuth POST error:", error);
+    if (error.name !== "SyntaxError" && !error.message?.includes("Failed to parse JSON")) {
+      console.log("OAuth POST error:", error);
+    }
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
