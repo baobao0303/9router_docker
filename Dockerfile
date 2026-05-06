@@ -47,4 +47,4 @@ RUN apk --no-cache upgrade && apk --no-cache add su-exec && \
 EXPOSE 20128
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["bun", "server.js"]
+CMD ["bun", "--smol", "server.js"]
