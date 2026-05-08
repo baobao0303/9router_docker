@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for 9router-docker on 2026-05-08T05:00:30Z
+# fly.toml app configuration file generated for 9router-docker-zm4mng on 2026-05-08T06:54:05Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = '9router-docker'
+app = '9router-docker-zm4mng'
 primary_region = 'ams'
 
 [build]
