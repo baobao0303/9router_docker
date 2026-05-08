@@ -10,7 +10,7 @@ primary_region = 'ams'
 
 [env]
   DATA_DIR = '/app/data'
-  PORT = '20128'
+  PORT = '8080'
 
 [[mounts]]
   source = 'ninerouter_data'
