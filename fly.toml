@@ -1,0 +1,19 @@
+primary_region = "sin" # Singapore (Gần Việt Nam, ping thấp)
+
+[build]
+
+[env]
+  PORT = "20128"
+  DATA_DIR = "/app/data"
+
+[mounts]
+  source = "ninerouter_data"
+  destination = "/app/data"
+
+[http_service]
+  internal_port = 20128
+  force_https = true
+  auto_stop_machines = false # Không tự động tắt để tránh lỗi các tiến trình ngầm (MITM)
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
