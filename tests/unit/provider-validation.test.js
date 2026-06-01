@@ -83,6 +83,48 @@ describe("Provider Validation API", () => {
     });
   });
 
+  describe("Chat Provider (CPAB)", () => {
+    it("should return valid:true when cpab /models endpoint succeeds", async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({ data: [] }),
+      });
+
+      const apiKey = "cpa_mock_key_for_testing";
+      const cpabUrl = "https://cpab.hiennq.dev/v1/models";
+
+      const res = await fetch(cpabUrl, {
+        headers: { Authorization: `Bearer ${apiKey}` },
+      });
+
+      expect(res.ok).toBe(true);
+      expect(fetch).toHaveBeenCalledWith(cpabUrl, expect.objectContaining({
+        headers: { Authorization: `Bearer ${apiKey}` },
+      }));
+    });
+
+    it("should return valid:false when cpab /models endpoint fails (e.g. 401)", async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 401,
+        json: () => Promise.resolve({ error: "Invalid key" }),
+      });
+
+      const apiKey = "cpa_invalid_key";
+      const cpabUrl = "https://cpab.hiennq.dev/v1/models";
+
+      const res = await fetch(cpabUrl, {
+        headers: { Authorization: `Bearer ${apiKey}` },
+      });
+
+      expect(res.ok).toBe(false);
+      expect(res.status).toBe(401);
+      expect(fetch).toHaveBeenCalledWith(cpabUrl, expect.objectContaining({
+        headers: { Authorization: `Bearer ${apiKey}` },
+      }));
+    });
+  });
+
   describe("Anthropic Compatible", () => {
     it("should normalize URL by removing /messages suffix", () => {
       const normalizeUrl = (url) => {
