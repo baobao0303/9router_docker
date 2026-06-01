@@ -619,6 +619,12 @@ export const PROVIDER_MODELS = {
     { id: "gen4_turbo", name: "Gen-4 Turbo", type: "video", params: [] },
     { id: "gen3a_turbo", name: "Gen-3 Alpha Turbo", type: "video", params: [] },
   ],
+  cpa: [
+    { id: "gpt-5.5", name: "GPT 5.5" },
+    { id: "gpt-5.4", name: "GPT 5.4" },
+    { id: "gpt-5.4-mini", name: "GPT 5.4 Mini" },
+    { id: "gpt-5.3-codex", name: "GPT 5.3 Codex" },
+  ],
 };
 
 // Helper functions
@@ -685,6 +691,7 @@ const OAUTH_ALIASES = {
   opencode: "oc",
   vertex: "vertex",
   "vertex-partner": "vertex-partner",
+  cpab: "cpa",
 };
 
 // Derived from PROVIDERS — no need to maintain manually

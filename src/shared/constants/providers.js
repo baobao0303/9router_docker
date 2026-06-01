@@ -119,6 +119,7 @@ export const APIKEY_PROVIDERS = {
   "aws-polly": { id: "aws-polly", alias: "polly", name: "AWS Polly", icon: "record_voice_over", color: "#FF9900", textIcon: "PL", website: "https://aws.amazon.com/polly/", notice: { text: "Use AWS Secret Access Key as API key; set providerSpecificData.accessKeyId and optional region.", apiKeyUrl: "https://console.aws.amazon.com/iam/home#/security_credentials" }, serviceKinds: ["tts"], hasProviderSpecificData: true, ttsConfig: { baseUrl: "https://polly.{region}.amazonaws.com/v1/speech", authType: "apikey", authHeader: "aws-sigv4", format: "aws-polly", models: [{ id: "standard", name: "Standard" }, { id: "neural", name: "Neural" }, { id: "long-form", name: "Long-form" }, { id: "generative", name: "Generative" }] } },
   "jina-ai": { id: "jina-ai", alias: "jina", name: "Jina AI", icon: "blur_on", color: "#2563EB", textIcon: "JA", website: "https://jina.ai", notice: { text: "10M free tokens on signup (non-commercial), no credit card required.", apiKeyUrl: "https://jina.ai/?sui=apikey" }, serviceKinds: ["embedding"], embeddingConfig: { baseUrl: "https://api.jina.ai/v1/embeddings", authType: "apikey", authHeader: "bearer", models: [{ id: "jina-embeddings-v3", name: "Jina Embeddings v3", dimensions: 1024 }, { id: "jina-embeddings-v2-base-en", name: "Jina Embeddings v2 Base EN", dimensions: 768 }, { id: "jina-embeddings-v2-base-code", name: "Jina Embeddings v2 Base Code", dimensions: 768 }] } },
   "jina-reader": { id: "jina-reader", alias: "jina", name: "Jina Reader", icon: "menu_book", color: "#000000", textIcon: "JR", website: "https://jina.ai/reader", notice: { apiKeyUrl: "https://jina.ai/?sui=apikey" }, serviceKinds: ["webFetch"], fetchConfig: { baseUrl: "https://r.jina.ai", method: "GET", authType: "apikey", authHeader: "bearer", costPerQuery: 0, freeMonthlyQuota: 1000000, formats: ["markdown", "text", "html"], maxCharacters: 200000, timeoutMs: 30000 } },
+  cpab: { id: "cpab", alias: "cpa", name: "Chat Provider (CPAB)", icon: "chat", color: "#FF4F8B", textIcon: "CPA", website: "https://cpab.hiennq.dev", notice: { apiKeyUrl: "https://t.me/BotbanloBot" } },
 };
 
 // Web Cookie Providers (use browser session cookie instead of API key)
@@ -228,6 +229,7 @@ export const USAGE_SUPPORTED_PROVIDERS = [
   "glm-cn",
   "minimax",
   "minimax-cn",
+  "cpab",
 ];
 
 // Subset that uses apikey auth (still surfaced on quota page)
@@ -236,4 +238,5 @@ export const USAGE_APIKEY_PROVIDERS = [
   "glm-cn",
   "minimax",
   "minimax-cn",
+  "cpab",
 ];
