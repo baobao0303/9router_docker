@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: 9router
+    env: docker
+    plan: free
+    region: singapore
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: INITIAL_PASSWORD
+        value: admin123
+      - key: PORT
+        value: 20128

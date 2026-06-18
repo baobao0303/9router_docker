@@ -1,0 +1,31 @@
+# fly.toml app configuration file generated for 9router-docker on 2026-05-23T06:48:55Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = '9router-docker'
+primary_region = 'sin'
+
+[build]
+
+[env]
+  DATA_DIR = '/app/data'
+  PORT = '8080'
+
+[[mounts]]
+  source = 'ninerouter_data'
+  destination = '/app/data'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'off'
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 512
+
